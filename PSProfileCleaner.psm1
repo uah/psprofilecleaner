@@ -51,6 +51,9 @@ function Remove-Profiles {
         $Keep
     )
 
+    # Get executing user's groups and display them:
+    # Return ([ADSISearcher]"(sAMAccountName=$env:UserName)").FindOne().Properties.memberof
+
     # Check to see if current user is an admin. Bail if not. 
     $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
     if ( -not $currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator) ) {
