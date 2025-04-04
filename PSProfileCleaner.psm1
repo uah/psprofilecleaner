@@ -1,3 +1,11 @@
+function TestForAdmin {
+    # Check to see if current user is an admin. Bail if not. 
+    $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
+    if ( -not $currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator) ) {
+        Write-Error -Message "This script requires administrative privileges. Exiting..." -ErrorId 1 -ErrorAction Stop
+    }
+}
+
 function Remove-Profiles {
 
     <#
