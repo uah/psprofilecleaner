@@ -45,6 +45,9 @@ function Remove-Profiles {
         [REMOVED]: lls0016 (C:\Users\lls0016)
         [SKIP]: kjs0011
         [SKIP]: admin-yrt0002
+
+        .LINK
+        https://gitlab.uah.edu/systems/psprofilecleaner
     #>
 
     [CmdletBinding()]
