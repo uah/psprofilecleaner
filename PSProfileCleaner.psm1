@@ -152,4 +152,40 @@ function Remove-Profiles {
 
 }
 
-Export-ModuleMember -Function * -Alias *
+function Remove-PanoptoRecordings {
+    [CmdletBinding()]
+    param (
+        [Parameter()]
+        [string]
+        $RecordingPath = "$env:SystemDrive\PanoptoRecorder\",
+
+        [Parameter()]
+        [int]
+        $DaysOld = 0
+    )
+
+    TestForAdmin
+
+    if ( -not (Test-Path $RecordingPath) ) {
+        Write-Error "The recording path `"$RecordingPath`" cannot be found." -ErrorId 3 -ErrorAction Stop
+    }
+
+    $aged_recordings = Get-ChildItem $RecordingPath | Where-Object { $_.LastWriteTime -lt (Get-Date).AddDays($DaysOld * -1)}
+
+    if ( $aged_recordings.count -eq 0 ) {
+        Write-Verbose "Nothing to delete."
+        Exit 0
+    }
+
+    foreach ( $dir in $aged_recordings ) {
+        try {
+            Remove-Item -Path $dir.FullName -Recurse
+        }
+        catch {
+            Write-Error -Message "Could not remove item: $($dir.FullName).`nThe error was:`n$_" -ErrorId 1 -ErrorAction Stop
+        }
+    }    
+
+}
+
+Export-ModuleMember -Function *-*
