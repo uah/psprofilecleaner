@@ -33,7 +33,7 @@ Copyright = '(c) UAH Office of Information Technology. All rights reserved.'
 Description = 'PSProfileCleaner is a (very opinionated) toolkit for refreshing campus devices between semesters or generally removing user profiles from hosts.'
 
 # Minimum version of the PowerShell engine required by this module
-PowerShellVersion = '5'
+PowerShellVersion = '5.0'
 
 # Name of the PowerShell host required by this module
 # PowerShellHostName = ''
