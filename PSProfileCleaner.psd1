@@ -27,7 +27,7 @@ Author = 'Coe Gwathney (ccg0023@uah.edu)'
 CompanyName = 'UAH Office of Information Technology'
 
 # Copyright statement for this module
-Copyright = '(c) UAH Office of Information Technology. All rights reserved.'
+Copyright = '(c) The University of Alabama in Huntsvile. All rights reserved.'
 
 # Description of the functionality provided by this module
 Description = 'PSProfileCleaner is a (very opinionated) toolkit for refreshing campus devices between semesters or generally removing user profiles from hosts.'
